@@ -1,0 +1,19 @@
+build/default/production/_ext/1472/main_esc.o:  \
+../main_esc.c  \
+../../library/codec/e_sound.h  \
+../../library/motor_led/e_init_port.h  \
+../../library/motor_led/e_epuck_ports.h  \
+../../library/motor_led/advance_one_timer/e_led.h  \
+../../library/motor_led/advance_one_timer/e_motors.h  \
+../../library/motor_led/advance_one_timer/e_agenda.h  \
+../../library/uart/e_uart_char.h  \
+../../library/a_d/advance_ad_scan/e_ad_conv.h  \
+../../library/a_d/advance_ad_scan/e_prox.h  \
+../../library/bluetooth/e_bluetooth.h  \
+../../library/I2C/e_I2C_protocol.h  \
+../../library/I2C/e_I2C_master_module.h  \
+../../library/I2C/../motor_led/e_epuck_ports.h  \
+../util.h  \
+../../library/utility/utility.h  \
+../escape.h  \
+../memory.h 
