@@ -31,6 +31,7 @@ extern char buffer[BUFFER_SIZE];
 extern int cntTimer;
 extern int selector;
 //extern char buffer[100];
+int hitDistance = 1100;
 
 #include "util.h"
 #include <utility/utility.h>
@@ -46,7 +47,7 @@ void run_escape()
     double lambda = 0.15;
     InitTMR1();
     int distances[NB_SENSORS];		// array keeping the distance sensor readings
-    int hitDistance = 1950;
+//    int hitDistance = 1500;
     int groundval[3]; // slanted for removal, once this shit works
     int nmean = 3;
     int runningmean_v[nmean];
@@ -194,7 +195,7 @@ void run_escape_dummy()
     double lambda = 0.15;
     InitTMR1();
     int distances[NB_SENSORS];		// array keeping the distance sensor readings
-    int hitDistance = 1950;
+//    int hitDistance = 1950;
 //    int groundval[3]; // slanted for removal, once this shit works
     int nmean = 3;
     int runningmean_v[nmean];
@@ -232,10 +233,10 @@ void run_escape_dummy()
     LED1 = TRUE;
     LED7 = TRUE;
     
-    getmeanGround(&runningmean_v[0]);
-    for (i=1; i<nmean; i++){
-            runningmean_v[i] = runningmean_v[0];
-        }
+//    getmeanGround(&runningmean_v[0]);
+//    for (i=1; i<nmean; i++){
+//            runningmean_v[i] = runningmean_v[0];
+//        }
     
     lastEvent = cntTimer;
 //    int cntstart = cntTimer;
