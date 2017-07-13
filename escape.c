@@ -52,6 +52,8 @@ void run_escape()
     int nmean = 3;
     int runningmean_v[nmean];
     int runningmean;
+    int tumblecount=0;
+    int colcount=0;
         
     int regspeed = 325;
     change_LEDs(FALSE);
@@ -72,13 +74,18 @@ void run_escape()
     //run(regspeed);
     
 // ** turn into some random initial direction
+//    double direction = (double)rand()/RAND_MAX*2.0*PI;
+//    //sprintf(buffer, "  Random Seed: %d %f \n ", randSeed, direction);
+//    //e_send_uart1_char(buffer, strlen(buffer)); while(e_uart1_sending());
+//    turnToDirection(direction);
+    
+// ** setup completed, wait for signal from Matlab
+    waitforSignalChar('1');
+    
     double direction = (double)rand()/RAND_MAX*2.0*PI;
     //sprintf(buffer, "  Random Seed: %d %f \n ", randSeed, direction);
     //e_send_uart1_char(buffer, strlen(buffer)); while(e_uart1_sending());
     turnToDirection(direction);
-    
-// ** setup completed, wait for signal from Matlab
-    waitforSignalChar('1');
 
 // ** set LEDs, get ground values, start moving
     change_LEDs(FALSE);
@@ -109,6 +116,7 @@ void run_escape()
 
                 // Turn into that direction
                 turnToDirection(direction);
+                tumblecount+=1;
                 run(regspeed); // set both wheels speed to regspeed
             }
             lastEvent = cntTimer;
@@ -125,6 +133,7 @@ void run_escape()
             run(0); // stop motor
             turnToDirection(-0.9*PI);
             run(regspeed);
+            colcount+=1;
             LED2 = FALSE;
             LED6 = FALSE;  
 
@@ -136,6 +145,7 @@ void run_escape()
             run(0); // stop motor
             turnToDirection(0.9*PI);
             run(regspeed);
+            colcount+=1;
             LED2 = FALSE;
             LED6 = FALSE;  
         }
@@ -146,6 +156,7 @@ void run_escape()
             run(0); // stop motor
             turnToDirection(-0.6*PI);
             run(regspeed);
+            colcount+=1;
             LED2 = FALSE;
             LED6 = FALSE;  
         }
@@ -156,6 +167,7 @@ void run_escape()
             run(0); // stop motor
             turnToDirection(0.6*PI);
             run(regspeed);
+            colcount+=1;
             LED2 = FALSE;
             LED6 = FALSE;  
         }
@@ -177,7 +189,7 @@ void run_escape()
         
         counter++;
         
-        sprintf(buffer, "%d, %d, %d, %d, %d, %d, %d, %d, -1, \r\n", selector, groundval[0],groundval[1],groundval[2], runningmean_v[nmean-1], runningmean,cntTimer-cntstart, counter );
+        sprintf(buffer, "%d, %d, %d, %d, %d, %d, %d, %d, %d, %d, -1, \r\n", selector, groundval[0],groundval[1],groundval[2], runningmean_v[nmean-1], runningmean,cntTimer-cntstart, counter, tumblecount, colcount );
         e_send_uart1_char(buffer, strlen(buffer)); while(e_uart1_sending());
         
     }
