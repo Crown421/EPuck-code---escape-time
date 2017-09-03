@@ -18,11 +18,9 @@ Most of the relevant knowledge to setup the e-puck robots may be found in the
 [GCtronic Wiki](http://www.gctronic.com/doc/index.php/E-Puck).
 
 Specifically, in addition to the project file above the following is needed:
-```
 * [MPLAB X IDE](http://www.microchip.com/mplab/mplab-x-ide): This integrated developer environment (IDE)
   combines the necessary libraries and compiles the firmware for the robots.
 
-```
 
 ### Installing
 
