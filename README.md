@@ -1,4 +1,4 @@
-# Mean escape times
+# Mean first escape times
 
 This is the code connected to a Master thesis at the University of Oxford. The project
 centered around an experiment with e-puck robots, and this repository contains some
@@ -15,10 +15,10 @@ The remaining functions only have calibration and testing purposes.
 ## Getting Started
 
 The file structure of this repository is as follows. The folders  ``matlab-files`` and
-``auxilary`` files contain files not directly relevant for the programming of the robots,
-while everything else just concerns the robots programming.
+``auxilary`` files contain files relevant for the communication with a computer via bluetooth,
+while everything else concerns the robots programming.
 The former folder contains some files regarding data retrieval and calibration,
-while the latter contains miscellaneous.  
+while the latter contains windows scripts affecting the COM-ports via the device manager.  
 
 ### Prerequisites
 
@@ -32,6 +32,38 @@ Specifically, in addition to the project file above the following is needed:
   The compiler necessary for the e-puck code. Theoretically, it should be added to the MPLAB install automatically. If that does not work, it needs to be linked in the settings.
 * [Standard library](http://projects.gctronic.com/E-Puck/e-puck-gna-svn-rev116.zip) This library
   needs to be placed in the same folder as the folder containing the files above.
+
+
+## Experimental setup
+
+The experimental setup was as follows, with measurements as shown in subfigure **A**. The robots, as seen in subfigure **B** were modified with white belts to ensure that they are uniformly detected by fellow robots from all angles. Only the highlighted robot runs the code version that allows it to communicate with the computer via the ``uart2`` bluetooth interface.
+
+<img src="https://crown421.github.io/rep_hosting/Robots/setup.png" width="750">
+
+<!-- ### Sensors  -->
+
+The sensors used in this project were the IR-proximity sensors and the ground brightness sensors as shown in the following subfigure **A**.
+
+<img src="https://crown421.github.io/rep_hosting/Robots/Sensor_setup.png" width="750">
+
+The ground sensor output is very noisy and differs by sensor position, robot, paper/ink quality and color profile of both the printer and the printing software. This is partially exemplified by subfigure **A**, which required smoothing as shown in subfigure **B**. The classification of each data point by the colored circle it originates from was based on calibration data for the specific robot and printout. This is shown in subfigure **C**, along with the first exit times for each circle.
+
+<img src="https://crown421.github.io/rep_hosting/Robots/sample_exp.png" width="750">
+
+## Modell Verification
+The robot's behaviour was compared to both the numerical results from an analytic model, and a kinetic Monte-Carlo (KMC) method. This yielded  very good agreement overall, especially compared to a common and simple diffusion model. Further details and results are kept for future  publication.
+
+<img src="https://crown421.github.io/rep_hosting/Robots/BndC_and_onePartResults.png" width="750">
+
+<!-- <img src="https://crown421.github.io/rep_hosting/Robots/error_discussion.png" width="750"> -->
+
+
+
+
+
+
+
+
 
 
 
